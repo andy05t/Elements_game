@@ -1,9 +1,17 @@
 from tkinter import *
 import random
 import tkinter.messagebox 
+import json
+import sys
 
-elements = {1:'H',2: "He",3: "Li", 4: "Be",5: "B",6: "C",7: "N",8: "O",9: "F",10: "Ne",
-11: "Na",12: "Mg",13: "Al",14: "Si",15: "P",16: "S",17: "Cl",18: "Ar",19: "K",20: "Ca"}
+elements = dict()
+with open("Python/periodic_table.json") as f:
+    df = json.load(f)['elements']
+for d in df:
+    elements[d["number"]] = d['symbol']
+
+#elements = {1:'H',2: "He",3: "Li", 4: "Be",5: "B",6: "C",7: "N",8: "O",9: "F",10: "Ne",
+#11: "Na",12: "Mg",13: "Al",14: "Si",15: "P",16: "S",17: "Cl",18: "Ar",19: "K",20: "Ca"}
 counter = 0
 el = random.randint(1,20)
 
